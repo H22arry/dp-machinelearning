@@ -48,10 +48,10 @@ with st.expander('**Input Features**'):
 
 # data preparation 
 # Encode X
-encode = ['island','sex']
-df_penguins = pd.get_dummies(input_penguins, prefix=encode)
+encode = ['island','sex']   
+df_penguins = pd.get_dummies(input_penguins, prefix=encode) 
 
-X = df_penguins[1:]
+X = df_penguins[1:]     
 input_row = df_penguins[:1]
 
 # Encode Y
@@ -76,6 +76,10 @@ clf = RandomForestClassifier()
 clf.fit(X,y)
 
 ## Apply model to make prediction
-prediction = clf.predict(input_row)
-prediction_proba = clf.predict_proba(input_row)
-prediction_proba
+prediction = clf.predict(input_row) 
+prediction_proba = clf.predict_proba(input_row)  #this is a numpy array
+
+df_prediction_proba = pd.DataFrame(prediction_proba)  #converting it to a dataframe
+df_prediction_proba.column = ['Adelie','Chinstrap','Gentoo'] 
+df_prediction_proba.rename(columns ={0: 'Adelie', 1:'Chinstrap',2:'Gentoo'})
+df_prediction_proba 
