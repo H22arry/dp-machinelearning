@@ -81,5 +81,7 @@ prediction_proba = clf.predict_proba(input_row)  #this is a numpy array
 
 df_prediction_proba = pd.DataFrame(prediction_proba)  #converting it to a dataframe
 df_prediction_proba.column = ['Adelie','Chinstrap','Gentoo'] 
-df_prediction_proba.rename(columns ={0: 'Adelie', 1:'Chinstrap',2:'Gentoo'})
+df_prediction_proba.rename(columns ={0: 'Adelie',
+                                     1:'Chinstrap',
+                                     2:'Gentoo'})
 df_prediction_proba 
